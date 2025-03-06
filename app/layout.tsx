@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans } from 'next/font/google'
 import "./globals.css";
-
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
   display: 'swap',
@@ -20,10 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={ibmPlexSans.className}>
-      <body
-      >
+      <body>
+        <Navbar />
         {children}
+        <Footer />
       </body>
-    </html>
+    </html >
   );
 }
