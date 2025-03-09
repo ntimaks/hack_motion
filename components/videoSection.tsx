@@ -5,213 +5,211 @@ import { ChevronDown, ChevronUp, Play, Pause } from "lucide-react"
 
 export default function GolfTrainingProgram() {
     const videoRef = useRef<HTMLVideoElement>(null)
+    const timelineRef = useRef<HTMLDivElement>(null)
     const [isPlaying, setIsPlaying] = useState(false)
     const [currentTime, setCurrentTime] = useState(0)
-    const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({
-        static: false,
-        dynamic: false,
-        challenge: false,
-    })
+    const [duration, setDuration] = useState(0)
+    const [activeSection, setActiveSection] = useState<string | null>(null)
+    const [showControls, setShowControls] = useState(false)
 
     // Timestamp definitions (in seconds)
-    const timestamps = {
-        static: 5,
-        dynamic: 14,
-        challenge: 24,
-        total: 30, // Assuming total video length is 30 seconds
-    }
+    const sections = [
+        { id: "static", name: "Static top drill", time: 5, description: "Get a feel for the optimal wrist position at Top of your swing" },
+        { id: "dynamic", name: "Dynamic top drill", time: 14, description: "Practice the transition from backswing to downswing with proper wrist angles" },
+        { id: "challenge", name: "Top full swing challenge", time: 24, description: "Apply what you've learned in a full swing sequence with feedback" }
+    ]
+    const totalDuration = 30 // Total video length in seconds
 
-    // Toggle section manually
-    const toggleSection = (section: string) => {
-        setOpenSections((prev) => ({
-            ...prev,
-            [section]: !prev[section],
-        }))
-    }
-
-    // Calculate progress based on video time
-    const calculateProgress = () => {
-        return (currentTime / timestamps.total) * 100
-    }
-
-    // Play/pause video
+    // Toggle play/pause
     const togglePlay = () => {
         if (videoRef.current) {
             if (isPlaying) {
                 videoRef.current.pause()
             } else {
                 videoRef.current.play().catch(error => {
-                    console.error("Error trying to play the video:", error);
-                });
+                    console.error("Error playing video:", error)
+                })
             }
-            setIsPlaying(!isPlaying)
         }
     }
 
-    // Update time and handle section opening based on timestamps
+    // Jump to section timestamp
+    const jumpToSection = (sectionId: string) => {
+        const section = sections.find(s => s.id === sectionId)
+        if (videoRef.current && section) {
+            videoRef.current.currentTime = section.time
+            if (!isPlaying) {
+                videoRef.current.play().catch(error => {
+                    console.error("Error playing video:", error)
+                })
+            }
+            setActiveSection(sectionId)
+        }
+    }
+
+    // Toggle section visibility
+    const toggleSection = (sectionId: string) => {
+        setActiveSection(activeSection === sectionId ? null : sectionId)
+        jumpToSection(sectionId)
+    }
+
+    // Handle timeline click for seeking
+    const handleTimelineClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!timelineRef.current || !videoRef.current) return
+
+        const rect = timelineRef.current.getBoundingClientRect()
+        const clickPosition = (e.clientX - rect.left) / rect.width
+        const newTime = clickPosition * duration
+
+        videoRef.current.currentTime = newTime
+    }
+
+    // Update time and handle active section based on current time
     useEffect(() => {
         const video = videoRef.current
         if (!video) return
 
         const handleTimeUpdate = () => {
-            const time = video.currentTime
-            setCurrentTime(time)
+            setCurrentTime(video.currentTime)
 
-            // Open sections based on timestamps
-            if (time >= timestamps.static && time < timestamps.dynamic) {
-                setOpenSections({
-                    static: true,
-                    dynamic: false,
-                    challenge: false,
-                })
-            } else if (time >= timestamps.dynamic && time < timestamps.challenge) {
-                setOpenSections({
-                    static: true,
-                    dynamic: true,
-                    challenge: false,
-                })
-            } else if (time >= timestamps.challenge) {
-                setOpenSections({
-                    static: true,
-                    dynamic: true,
-                    challenge: true,
-                })
+            // Set active section based on current time
+            for (let i = sections.length - 1; i >= 0; i--) {
+                if (video.currentTime >= sections[i].time) {
+                    setActiveSection(sections[i].id)
+                    break
+                }
             }
         }
 
+        const handlePlayState = () => setIsPlaying(!video.paused)
+        const handleLoadedMetadata = () => setDuration(video.duration)
+
         video.addEventListener("timeupdate", handleTimeUpdate)
-        video.addEventListener("play", () => setIsPlaying(true))
-        video.addEventListener("pause", () => setIsPlaying(false))
+        video.addEventListener("play", handlePlayState)
+        video.addEventListener("pause", handlePlayState)
+        video.addEventListener("loadedmetadata", handleLoadedMetadata)
 
         return () => {
             video.removeEventListener("timeupdate", handleTimeUpdate)
-            video.removeEventListener("play", () => setIsPlaying(true))
-            video.removeEventListener("pause", () => setIsPlaying(false))
+            video.removeEventListener("play", handlePlayState)
+            video.removeEventListener("pause", handlePlayState)
+            video.removeEventListener("loadedmetadata", handleLoadedMetadata)
         }
-    }, [timestamps])
+    }, [sections])
 
-    // Jump to specific timestamp when clicking on a section
-    const jumpToTimestamp = (section: string) => {
-        if (videoRef.current && timestamps[section as keyof typeof timestamps]) {
-            videoRef.current.currentTime = timestamps[section as keyof typeof timestamps]
-            if (!isPlaying) {
-                videoRef.current.play().catch(error => {
-                    console.error("Error trying to play the video:", error);
-                });
-                setIsPlaying(true)
-            }
-        }
+    // Format time as MM:SS
+    const formatTime = (timeInSeconds: number) => {
+        const minutes = Math.floor(timeInSeconds / 60)
+        const seconds = Math.floor(timeInSeconds % 60)
+        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
     }
 
     return (
         <div className="max-w-6xl mx-auto p-6">
-            <h1 className="text-[48px] font-medium text-[#5773FF] mb-8">The best solution for you: Impact Training Program</h1>
+            <h1 className="text-[48px] font-medium text-[#5773FF] mb-8">
+                The best solution for you: Impact Training Program
+            </h1>
 
             <div className="border-t border-gray-300 my-4"></div>
 
             <div className="flex gap-8 mt-8">
+                {/* Video player */}
                 <div className="flex-1">
-                    <div className="relative aspect-video w-full bg-black overflow-hidden">
+                    <div
+                        className="relative aspect-video bg-black overflow-hidden rounded-lg"
+                        onMouseEnter={() => setShowControls(true)}
+                        onMouseLeave={() => setShowControls(false)}
+                    >
                         <video
                             ref={videoRef}
-                            className="w-[746px] h-[510px] object-cover"
+                            className="w-full h-full object-cover"
                             src="/video.mp4"
                             onClick={togglePlay}
                             preload="auto"
                             playsInline
                         ></video>
 
-                        <button
-                            onClick={togglePlay}
-                            className="absolute inset-0 w-full h-full flex items-center justify-center bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity"
-                        >
-                            {isPlaying ?
-                                <Pause className="w-16 h-16 text-white" /> :
-                                <Play className="w-16 h-16 text-white" />
-                            }
-                        </button>
+                        {/* Video controls overlay */}
+                        <div className={`absolute inset-0 flex flex-col justify-between transition-opacity duration-300 ${showControls || !isPlaying ? 'opacity-100' : 'opacity-0'}`}>
+                            {/* Play/Pause button */}
+                            <div className="flex-1 flex items-center justify-center">
+                                <button
+                                    onClick={togglePlay}
+                                    className="bg-black/30 rounded-full p-4 hover:bg-black/50 transition-colors"
+                                >
+                                    {isPlaying ?
+                                        <Pause className="w-10 h-10 text-white" /> :
+                                        <Play className="w-10 h-10 text-white" />
+                                    }
+                                </button>
+                            </div>
+
+                            {/* Timeline container */}
+                            <div className="bg-gradient-to-t from-black/70 to-transparent p-4 pt-12">
+                                <div className="flex items-center gap-2">
+                                    <span className="text-sm text-white">{formatTime(currentTime)}</span>
+                                    <div
+                                        ref={timelineRef}
+                                        className="relative h-2 flex-1 bg-white/30 rounded-full cursor-pointer"
+                                        onClick={handleTimelineClick}
+                                    >
+                                        {/* Section markers */}
+                                        {sections.map(section => (
+                                            <div
+                                                key={section.id}
+                                                className="absolute top-0 w-1 h-full bg-white rounded-full"
+                                                style={{ left: `${(section.time / totalDuration) * 100}%` }}
+                                                title={section.name}
+                                            />
+                                        ))}
+
+                                        {/* Progress bar */}
+                                        <div
+                                            className="absolute top-0 left-0 h-full bg-[#5773FF] rounded-full"
+                                            style={{ width: `${(currentTime / totalDuration) * 100}%` }}
+                                        />
+                                    </div>
+                                    <span className="text-sm text-white">{formatTime(duration || totalDuration)}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
+                {/* Sections sidebar */}
                 <div className="w-80 relative">
-                    {/* Progress bar container */}
+                    {/* Progress bar */}
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-white rounded-full">
-                        {/* Animated fill */}
                         <div
-                            className="absolute left-0 top-0 w-full bg-blue-500 rounded-full transition-all duration-300 ease-in-out"
-                            style={{ height: `${calculateProgress()}%` }}
+                            className="absolute left-0 top-0 w-full bg-blue-500 rounded-full transition-all duration-300"
+                            style={{ height: `${(currentTime / totalDuration) * 100}%` }}
                         ></div>
                     </div>
 
                     <div className="ml-6">
-                        {/* Static top drill */}
-                        <div className="mb-6">
-                            <button
-                                onClick={() => {
-                                    toggleSection("static")
-                                    jumpToTimestamp("static")
-                                }}
-                                className={`flex items-center font-medium text-xl mb-2 hover:text-[#5773FF] ${currentTime >= timestamps.static ? "text-[#5773FF]" : "text-gray-400"
-                                    }`}
-                            >
-                                {openSections.static ? <ChevronUp className="mr-2" /> : <ChevronDown className="mr-2" />}
-                                Static top drill
-                            </button>
+                        {sections.map((section, index) => (
+                            <div key={section.id} className="mb-6">
+                                {index > 0 && <div className="h-px bg-gray-200 w-full my-4"></div>}
 
-                            {openSections.static && (
-                                <div className="pl-7 text-gray-800 animate-fadeIn">
-                                    Get a feel for the optimal wrist position at Top of your swing
-                                </div>
-                            )}
-                        </div>
+                                <button
+                                    onClick={() => toggleSection(section.id)}
+                                    className={`flex items-center font-medium text-xl mb-2 hover:text-[#5773FF] ${currentTime >= section.time ? "text-[#5773FF]" : "text-gray-400"
+                                        }`}
+                                >
+                                    {activeSection === section.id ?
+                                        <ChevronUp className="mr-2" /> :
+                                        <ChevronDown className="mr-2" />
+                                    }
+                                    {section.name}
+                                </button>
 
-                        {/* Divider line */}
-                        <div className="h-px bg-gray-200 w-full my-4"></div>
-
-                        {/* Dynamic top drill */}
-                        <div className="mb-6">
-                            <button
-                                onClick={() => {
-                                    toggleSection("dynamic")
-                                    jumpToTimestamp("dynamic")
-                                }}
-                                className={`flex items-center font-medium text-xl mb-2 hover:text-[#5773FF] ${currentTime >= timestamps.dynamic ? "text-[#5773FF]" : "text-gray-400"
-                                    }`}
-                            >
-                                {openSections.dynamic ? <ChevronUp className="mr-2" /> : <ChevronDown className="mr-2" />}
-                                Dynamic top drill
-                            </button>
-
-                            {openSections.dynamic && (
-                                <div className="pl-7 text-gray-800 animate-fadeIn">
-                                    Practice the transition from backswing to downswing with proper wrist angles
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Divider line */}
-                        <div className="h-px bg-gray-200 w-full my-4"></div>
-
-                        {/* Top full swing challenge */}
-                        <div className="mb-6">
-                            <button
-                                onClick={() => {
-                                    toggleSection("challenge")
-                                    jumpToTimestamp("challenge")
-                                }}
-                                className={`flex items-center font-medium text-xl mb-2 hover:text-[#5773FF] ${currentTime >= timestamps.challenge ? "text-[#5773FF]" : "text-gray-400"
-                                    }`}
-                            >
-                                {openSections.challenge ? <ChevronUp className="mr-2" /> : <ChevronDown className="mr-2" />}
-                                Top full swing challenge
-                            </button>
-
-                            {openSections.challenge && (
-                                <div className="pl-7 text-gray-800 animate-fadeIn">
-                                    Apply what you've learned in a full swing sequence with feedback
-                                </div>
-                            )}
-                        </div>
+                                {activeSection === section.id && (
+                                    <div className="pl-7 text-gray-800 animate-fadeIn">
+                                        {section.description}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
