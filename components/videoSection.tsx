@@ -126,14 +126,14 @@ export default function VideoSection({
     }
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
-            <h1 className="text-[48px] font-medium text-[#5773FF] mb-8 md:text-4xl sm:text-3xl">
+        <div className="max-w-6xl mx-auto w-full p-6 ">
+            <h1 className="text-[32px] font-medium text-[#5773FF] mb-8 md:text-4xl sm:text-3xl">
                 {title}
             </h1>
 
-            <div className="border-t border-gray-300 my-4"></div>
+            <div className="border-t border-gray-300 my-4 w-full"></div>
 
-            <div className="flex flex-col lg:flex-row gap-8 mt-8">
+            <div className="flex flex-col gap-8 mt-8 lg:flex-row">
                 {/* Video player */}
                 <div className="flex-1">
                     <div
@@ -220,17 +220,25 @@ export default function VideoSection({
 
                 {/* Sections sidebar */}
                 <div className="w-full lg:w-80 relative mt-6 lg:mt-0">
-                    {/* Progress bar */}
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-white rounded-full">
+                    {/* Progress bar - vertical on desktop */}
+                    <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-4 bg-white rounded-full">
                         <div
-                            className="absolute left-0 top-0 w-full bg-blue-500 rounded-full transition-all duration-300"
+                            className="absolute left-0 top-2 bottom-0 w-[5px] bg-[#5773FF] rounded-full transition-all duration-300 left-1/2 -translate-x-1/2"
                             style={{ height: `${(currentTime / (duration || totalDuration)) * 100}%` }}
                         ></div>
                     </div>
 
-                    <div className="ml-6">
+                    {/* Progress bar - horizontal on mobile */}
+                    <div className="block lg:hidden absolute left-0 top-0 w-full h-4 bg-white rounded-full">
+                        <div
+                            className="absolute left-2 top-1/2 -translate-y-1/2 h-[5px] bg-[#5773FF] rounded-full transition-all duration-300"
+                            style={{ width: `${(currentTime / (duration || totalDuration)) * 100}%` }}
+                        ></div>
+                    </div>
+
+                    <div className="ml-6 lg:ml-6 mt-4 lg:mt-0 pt-5">
                         {sections.map((section, index) => (
-                            <div key={section.id} className="mb-6">
+                            <div key={section.id} className="mb-6 border-b border-gray-300 pb-4">
                                 {index > 0 && <div className="h-px bg-gray-200 w-full my-4"></div>}
 
                                 <button
@@ -259,4 +267,3 @@ export default function VideoSection({
         </div>
     )
 }
-
