@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import { AnalyticsEvent } from '@/utils/analytics';
+import { analyticsStore } from '@/utils/devAnalyticsStore';
 
 const ANALYTICS_FILE = path.join(process.cwd(), 'analytics-data.json');
 
@@ -34,17 +35,8 @@ export async function POST(request: NextRequest) {
             event.timestamp = Date.now();
         }
 
-        // Read existing events
-        const data = fs.readFileSync(ANALYTICS_FILE, 'utf8');
-        const events = JSON.parse(data);
-
-        // Add new event
-        events.push(event);
-
-        // Write back to file
-        fs.writeFileSync(ANALYTICS_FILE, JSON.stringify(events, null, 2));
-
-        console.log('Analytics event saved:', event.eventType);
+        // Store the event
+        analyticsStore.addEvent(event);
 
         // Example of sending to a hypothetical analytics service
         // await sendToAnalyticsService(event);
