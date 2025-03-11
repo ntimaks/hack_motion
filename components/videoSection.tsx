@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react"
 import { ChevronDown, ChevronUp, Play, Pause } from "lucide-react"
+import { getUserId, sendAnalyticsEvent } from "@/utils/analytics"
+import { useSearchParams } from 'next/navigation'
 
 interface Section {
     id: string
@@ -35,6 +37,8 @@ export default function VideoSection({
     const [activeSection, setActiveSection] = useState<string | null>(null)
     const [showControls, setShowControls] = useState(false)
     const [videoError, setVideoError] = useState(false)
+    const searchParams = useSearchParams()
+    const goal = searchParams.get("goal") || "break 80"
 
     // Toggle play/pause
     const togglePlay = () => {
@@ -117,6 +121,42 @@ export default function VideoSection({
             video.removeEventListener("error", handleError)
         }
     }, [sections])
+
+    // Add this effect to track video completion
+    useEffect(() => {
+        const video = videoRef.current
+        if (!video) return
+
+        const handleVideoEnd = async () => {
+            const userId = getUserId()
+            const pathname = window.location.pathname
+            const url = `${window.location.origin}${pathname}${window.location.search}`
+
+            await sendAnalyticsEvent({
+                eventType: 'video_watch',
+                userId,
+                timestamp: Date.now(),
+                url,
+                userAgent: navigator.userAgent,
+                deviceInfo: {
+                    screen: `${window.innerWidth}x${window.innerHeight}`,
+                    language: navigator.language,
+                },
+                goalType: goal,
+                additionalData: {
+                    videoTitle: title,
+                    videoDuration: video.duration,
+                    completedSections: sections.map(s => s.id),
+                }
+            })
+        }
+
+        video.addEventListener('ended', handleVideoEnd)
+
+        return () => {
+            video.removeEventListener('ended', handleVideoEnd)
+        }
+    }, [sections, title, goal])
 
     // Format time as MM:SS
     const formatTime = (timeInSeconds: number) => {
