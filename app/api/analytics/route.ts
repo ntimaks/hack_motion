@@ -35,11 +35,22 @@ export async function POST(request: NextRequest) {
             event.timestamp = Date.now();
         }
 
-        // Store the event
+        // Store the event in memory
         analyticsStore.addEvent(event);
 
-        // Example of sending to a hypothetical analytics service
-        // await sendToAnalyticsService(event);
+        // ADDED: Store the event in the file
+        try {
+            let events = [];
+            if (fs.existsSync(ANALYTICS_FILE)) {
+                const data = fs.readFileSync(ANALYTICS_FILE, 'utf8');
+                events = JSON.parse(data);
+            }
+            events.push(event);
+            fs.writeFileSync(ANALYTICS_FILE, JSON.stringify(events, null, 2));
+            console.log('Event saved to file successfully');
+        } catch (fileError) {
+            console.error('Error saving event to file:', fileError);
+        }
 
         return NextResponse.json({ success: true });
     } catch (error) {
