@@ -30,7 +30,9 @@ export default async function RootLayout({
   return (
     <html lang="en" className={ibmPlexSans.className}>
       <body>
-        <Navbar />
+        <div className="hidden md:block">
+          <Navbar />
+        </div>
         <PageViewTracker userAgent={userAgent} />
         {children}
         <Footer />

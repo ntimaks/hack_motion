@@ -277,13 +277,13 @@ export default function VideoSection({
 
                                 <button
                                     onClick={() => toggleSection(section.id)}
-                                    className={`flex items-center font-medium text-xl mb-2 hover:text-[#5773FF] ${currentTime >= section.time ? "text-[#5773FF]" : "text-gray-400"
+                                    className={`flex items-start text-left font-medium text-xl mb-2 hover:text-[#5773FF] ${currentTime >= section.time ? "text-[#5773FF]" : "text-gray-400"
                                         }`}
                                     aria-expanded={activeSection === section.id}
                                 >
                                     {activeSection === section.id ?
-                                        <ChevronUp className="mr-2" /> :
-                                        <ChevronDown className="mr-2" />
+                                        <ChevronUp className="mr-2 flex-shrink-0" /> :
+                                        <ChevronDown className="mr-2 flex-shrink-0" />
                                     }
                                     {section.name}
                                 </button>

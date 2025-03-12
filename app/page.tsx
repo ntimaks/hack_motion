@@ -8,7 +8,7 @@ import { Suspense } from 'react';
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center text-black bg-[#E6E6E6] 
-      px-4 pt-8 pb-4 lg:p-[95px] gap-8 lg:gap-10">
+      px-4 pt-8 pb-4 lg:p-[95px] gap-8 lg:gap-10 ">
 
       <div className="flex flex-col lg:flex-row w-full gap-8 lg:gap-[32px]">
         <Suspense fallback={<div>Loading...</div>}>

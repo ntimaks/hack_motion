@@ -196,5 +196,303 @@
     "referrer": "",
     "goalType": "break 80",
     "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741798991715,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1027x808",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/analytics-dashboard",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741800141016,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36",
+    "deviceInfo": {
+      "screen": "746x952",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/analytics-dashboard",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741800502776,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+    "deviceInfo": {
+      "screen": "375x667",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/analytics-dashboard",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741800543321,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+    "deviceInfo": {
+      "screen": "375x667",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/analytics-dashboard",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741800821762,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36",
+    "deviceInfo": {
+      "screen": "252x1300",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/analytics-dashboard",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741800863357,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36",
+    "deviceInfo": {
+      "screen": "570x932",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741800884659,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36",
+    "deviceInfo": {
+      "screen": "252x1137",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741800921476,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36",
+    "deviceInfo": {
+      "screen": "785x932",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741800935728,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36",
+    "deviceInfo": {
+      "screen": "436x932",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741801124798,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36",
+    "deviceInfo": {
+      "screen": "420x932",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741801339641,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+    "deviceInfo": {
+      "screen": "375x667",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "video_watch",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741801952192,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+    "deviceInfo": {
+      "screen": "375x667",
+      "language": "en-US"
+    },
+    "goalType": "break 80",
+    "additionalData": {
+      "videoTitle": "The best solution for you: Impact Training Program",
+      "videoDuration": 30.065011,
+      "completedSections": [
+        "static",
+        "dynamic",
+        "challenge"
+      ]
+    },
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741802235980,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36",
+    "deviceInfo": {
+      "screen": "382x952",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "video_watch",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741802504720,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+    "deviceInfo": {
+      "screen": "375x667",
+      "language": "en-US"
+    },
+    "goalType": "break 80",
+    "additionalData": {
+      "videoTitle": "The best solution for you: Impact Training Program",
+      "videoDuration": 30.065011,
+      "completedSections": [
+        "static",
+        "dynamic",
+        "challenge"
+      ]
+    },
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "video_watch",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741802565909,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1368x824",
+      "language": "en-US"
+    },
+    "goalType": "break 80",
+    "additionalData": {
+      "videoTitle": "The best solution for you: Impact Training Program",
+      "videoDuration": 30.065011,
+      "completedSections": [
+        "static",
+        "dynamic",
+        "challenge"
+      ]
+    },
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "video_watch",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741802569950,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1368x824",
+      "language": "en-US"
+    },
+    "goalType": "break 80",
+    "additionalData": {
+      "videoTitle": "The best solution for you: Impact Training Program",
+      "videoDuration": 30.065011,
+      "completedSections": [
+        "static",
+        "dynamic",
+        "challenge"
+      ]
+    },
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741802696525,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1368x824",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741802702667,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1368x824",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741802718983,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1368x824",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
   }
 ]
