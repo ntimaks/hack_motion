@@ -1,4 +1,3 @@
-// Types for our analytics events
 export interface AnalyticsEvent {
     eventType: 'page_view' | 'video_watch';
     userId: string;
@@ -18,7 +17,6 @@ export interface AnalyticsEvent {
 // Generate a unique user ID or get existing from storage
 export const getUserId = (): string => {
     if (typeof window !== 'undefined') {
-        // Client-side code
         const existingId = localStorage.getItem('user_id');
         if (existingId) return existingId;
 
@@ -26,17 +24,14 @@ export const getUserId = (): string => {
         localStorage.setItem('user_id', newId);
         return newId;
     } else {
-        // Server-side fallback
         return generateUniqueId();
     }
 };
 
-// Generate a simple unique ID
 const generateUniqueId = (): string => {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
 };
 
-// Send event to your analytics endpoint
 export const sendAnalyticsEvent = async (event: AnalyticsEvent): Promise<void> => {
     try {
         console.log('Analytics event being sent:', event);

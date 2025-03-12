@@ -1,5 +1,4 @@
-// Create a simple store at utils/devAnalyticsStore.ts
-// This is only for development - not for production use
+
 
 export const analyticsStore = {
     events: [] as any[],

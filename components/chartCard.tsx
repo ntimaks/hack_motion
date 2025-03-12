@@ -17,7 +17,6 @@ const ChartCard: React.FC = () => {
 
     return (
         <div className={`rounded-[8px] bg-[#F7F7F7] w-full p-6 relative ${isMobile ? "aspect-square" : "h-[300px]"} transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg`}>
-            {/* Y-axis labels - Different for mobile and desktop */}
             {isMobile ? (
                 <>
                     <div className="absolute left-6 top-8 text-[14px] text-gray-700 font-medium">100+</div>
@@ -34,7 +33,6 @@ const ChartCard: React.FC = () => {
                 </>
             )}
 
-            {/* Horizontal dotted lines */}
             {isMobile ? (
                 <>
                     <div className="absolute left-[120px] right-6 top-[60px] border-t border-dashed border-gray-300"></div>
@@ -49,7 +47,6 @@ const ChartCard: React.FC = () => {
                 </>
             )}
 
-            {/* The curve - using SVG for the smooth curve */}
             <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
                 {isMobile ? (
                     <path d="M 35 15 C 45 15, 55 15, 65 50 S 85 85, 90 85" fill="none" stroke="#5b6ef5" strokeWidth="0.8" />
@@ -58,7 +55,6 @@ const ChartCard: React.FC = () => {
                 )}
             </svg>
 
-            {/* "Now" label with black box */}
             {isMobile ? (
                 <div className="absolute left-[35%] top-[22%]">
                     <div className="relative">
@@ -85,7 +81,6 @@ const ChartCard: React.FC = () => {
                 </div>
             )}
 
-            {/* "After HackMotion" label with blue box */}
             {isMobile ? (
                 <div className="absolute right-[15%] top-[58%]">
                     <div className="relative">
