@@ -90,5 +90,55 @@
     "referrer": "http://localhost:3000/analytics-dashboard",
     "goalType": "break 80",
     "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741797837978,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1027x808",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "video_watch",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741797870980,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1027x808",
+      "language": "en-US"
+    },
+    "goalType": "break 80",
+    "additionalData": {
+      "videoTitle": "The best solution for you: Impact Training Program",
+      "videoDuration": 30.065011,
+      "completedSections": [
+        "static",
+        "dynamic",
+        "challenge"
+      ]
+    },
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741797946989,
+    "url": "http://localhost:3000/",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1027x808",
+      "language": "en-US"
+    },
+    "referrer": "http://localhost:3000/",
+    "goalType": "break 80",
+    "ipAddress": "::1"
   }
 ]

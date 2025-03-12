@@ -40,7 +40,6 @@ export default function VideoSection({
     const searchParams = useSearchParams()
     const goal = searchParams.get("goal") || "break 80"
 
-    // Toggle play/pause
     const togglePlay = () => {
         if (videoRef.current) {
             if (isPlaying) {
@@ -54,7 +53,6 @@ export default function VideoSection({
         }
     }
 
-    // Jump to section timestamp
     const jumpToSection = (sectionId: string) => {
         const section = sections.find(s => s.id === sectionId)
         if (videoRef.current && section) {
@@ -69,13 +67,11 @@ export default function VideoSection({
         }
     }
 
-    // Toggle section visibility
     const toggleSection = (sectionId: string) => {
         setActiveSection(activeSection === sectionId ? null : sectionId)
         jumpToSection(sectionId)
     }
 
-    // Handle timeline click for seeking
     const handleTimelineClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!timelineRef.current || !videoRef.current) return
 
@@ -86,7 +82,6 @@ export default function VideoSection({
         videoRef.current.currentTime = newTime
     }
 
-    // Update time and handle active section based on current time
     useEffect(() => {
         const video = videoRef.current
         if (!video) return
@@ -122,7 +117,6 @@ export default function VideoSection({
         }
     }, [sections])
 
-    // Add this effect to track video completion
     useEffect(() => {
         const video = videoRef.current
         if (!video) return
@@ -158,7 +152,6 @@ export default function VideoSection({
         }
     }, [sections, title, goal])
 
-    // Format time as MM:SS
     const formatTime = (timeInSeconds: number) => {
         const minutes = Math.floor(timeInSeconds / 60)
         const seconds = Math.floor(timeInSeconds % 60)
@@ -177,7 +170,7 @@ export default function VideoSection({
                 {/* Video player */}
                 <div className="flex-1">
                     <div
-                        className="relative aspect-video bg-black overflow-hidden rounded-lg"
+                        className="relative aspect-video bg-black overflow-hidden "
                         onMouseEnter={() => setShowControls(true)}
                         onMouseLeave={() => setShowControls(false)}
                     >
@@ -203,56 +196,57 @@ export default function VideoSection({
                                 }`}
                             aria-hidden={!showControls && isPlaying && !videoError}
                         >
-                            {/* Play/Pause button */}
+                            {/* Play/Pause button and Timeline container */}
                             {!videoError && (
-                                <div className="flex-1 flex items-center justify-center">
-                                    <button
-                                        onClick={togglePlay}
-                                        className="bg-black/30 rounded-full p-4 hover:bg-black/50 transition-colors"
-                                        aria-label={isPlaying ? "Pause video" : "Play video"}
-                                    >
-                                        {isPlaying ?
-                                            <Pause className="w-10 h-10 text-white" /> :
-                                            <Play className="w-10 h-10 text-white" />
-                                        }
-                                    </button>
-                                </div>
-                            )}
-
-                            {/* Timeline container */}
-                            {!videoError && (
-                                <div className="bg-gradient-to-t from-black/70 to-transparent p-4 pt-12">
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-sm text-white">{formatTime(currentTime)}</span>
-                                        <div
-                                            ref={timelineRef}
-                                            className="relative h-2 flex-1 bg-white/30 rounded-full cursor-pointer"
-                                            onClick={handleTimelineClick}
-                                            role="slider"
-                                            aria-label="Video progress"
-                                            aria-valuemin={0}
-                                            aria-valuemax={duration || totalDuration}
-                                            aria-valuenow={currentTime}
+                                <>
+                                    {/* Play/Pause button in absolute position */}
+                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <button
+                                            onClick={togglePlay}
+                                            className="bg-black/30 rounded-full p-4 hover:bg-black/50 transition-colors pointer-events-auto"
+                                            aria-label={isPlaying ? "Pause video" : "Play video"}
                                         >
-                                            {/* Section markers */}
-                                            {sections.map(section => (
-                                                <div
-                                                    key={section.id}
-                                                    className="absolute top-0 w-1 h-full bg-white rounded-full"
-                                                    style={{ left: `${(section.time / (duration || totalDuration)) * 100}%` }}
-                                                    title={section.name}
-                                                />
-                                            ))}
-
-                                            {/* Progress bar */}
-                                            <div
-                                                className="absolute top-0 left-0 h-full bg-[#5773FF] rounded-full"
-                                                style={{ width: `${(currentTime / (duration || totalDuration)) * 100}%` }}
-                                            />
-                                        </div>
-                                        <span className="text-sm text-white">{formatTime(duration || totalDuration)}</span>
+                                            {isPlaying ?
+                                                <Pause className="w-10 h-10 text-white" /> :
+                                                <Play className="w-10 h-10 text-white" />
+                                            }
+                                        </button>
                                     </div>
-                                </div>
+
+                                    {/* Timeline container at the bottom */}
+                                    <div className="bg-gradient-to-t from-black/70 to-transparent p-4 pt-12 mt-auto">
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-sm text-white">{formatTime(currentTime)}</span>
+                                            <div
+                                                ref={timelineRef}
+                                                className="relative h-2 flex-1 bg-white/30 rounded-full cursor-pointer"
+                                                onClick={handleTimelineClick}
+                                                role="slider"
+                                                aria-label="Video progress"
+                                                aria-valuemin={0}
+                                                aria-valuemax={duration || totalDuration}
+                                                aria-valuenow={currentTime}
+                                            >
+                                                {/* Section markers */}
+                                                {sections.map(section => (
+                                                    <div
+                                                        key={section.id}
+                                                        className="absolute top-0 w-1 h-full bg-white rounded-full"
+                                                        style={{ left: `${(section.time / (duration || totalDuration)) * 100}%` }}
+                                                        title={section.name}
+                                                    />
+                                                ))}
+
+                                                {/* Progress bar */}
+                                                <div
+                                                    className="absolute top-0 left-0 h-full bg-[#5773FF] rounded-full"
+                                                    style={{ width: `${(currentTime / (duration || totalDuration)) * 100}%` }}
+                                                />
+                                            </div>
+                                            <span className="text-sm text-white">{formatTime(duration || totalDuration)}</span>
+                                        </div>
+                                    </div>
+                                </>
                             )}
                         </div>
                     </div>
