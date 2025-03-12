@@ -14,7 +14,6 @@ export default function ServerAnalytics({ userId }: ServerAnalyticsProps) {
     const goal = searchParams.get('goal') || 'break 80';
 
     useEffect(() => {
-        // Only track page view once per component mount
         if (!hasTrackedPageView.current) {
             trackPageView({
                 userId,
@@ -24,7 +23,6 @@ export default function ServerAnalytics({ userId }: ServerAnalyticsProps) {
             hasTrackedPageView.current = true;
         }
 
-        // Set up button click tracking for the "Start Now" button
         const startButton = document.querySelector('button:contains("Start Now")');
         if (startButton) {
             startButton.addEventListener('click', () => {
@@ -34,7 +32,6 @@ export default function ServerAnalytics({ userId }: ServerAnalyticsProps) {
             });
         }
 
-        // Clean up event listeners
         return () => {
             if (startButton) {
                 startButton.removeEventListener('click', () => { });
@@ -42,6 +39,5 @@ export default function ServerAnalytics({ userId }: ServerAnalyticsProps) {
         };
     }, [userId, goal]);
 
-    // This component doesn't render anything
     return null;
 }

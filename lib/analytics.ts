@@ -9,11 +9,9 @@ interface ButtonClickData {
 }
 
 export const trackPageView = (data: PageViewData) => {
-    // TODO: Implement actual analytics tracking
     console.log('Page view tracked:', data);
 };
 
 export const trackButtonClick = (buttonId: string, buttonText: string, data: ButtonClickData) => {
-    // TODO: Implement actual analytics tracking
     console.log('Button click tracked:', { buttonId, buttonText, ...data });
 }; 

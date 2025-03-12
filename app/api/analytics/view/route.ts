@@ -3,10 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-// For demo purposes, we'll store events in a JSON file
 const ANALYTICS_FILE = path.join(process.cwd(), 'analytics-data.json');
 
-// Initialize the file if it doesn't exist
 if (!fs.existsSync(ANALYTICS_FILE)) {
     fs.writeFileSync(ANALYTICS_FILE, JSON.stringify([]));
 }

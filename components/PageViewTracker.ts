@@ -14,7 +14,6 @@ export default function PageViewTracker({ userAgent }: PageViewTrackerProps) {
     const goal = searchParams.get("goal") || "break 80";
 
     useEffect(() => {
-        // Track page view when component mounts
         const trackPageView = async () => {
             const userId = getUserId();
             const url = `${window.location.origin}${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
@@ -37,5 +36,5 @@ export default function PageViewTracker({ userAgent }: PageViewTrackerProps) {
         trackPageView();
     }, [pathname, searchParams, userAgent, goal]);
 
-    return null; // This component doesn't render anything
+    return null;
 }

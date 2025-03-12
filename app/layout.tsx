@@ -24,7 +24,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Get server-side information
   const headersList = await headers();
   const userAgent = headersList.get('user-agent') || '';
 
@@ -32,7 +31,6 @@ export default async function RootLayout({
     <html lang="en" className={ibmPlexSans.className}>
       <body>
         <Navbar />
-        {/* This component will handle page view tracking */}
         <PageViewTracker userAgent={userAgent} />
         {children}
         <Footer />

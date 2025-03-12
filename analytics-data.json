@@ -140,5 +140,61 @@
     "referrer": "http://localhost:3000/",
     "goalType": "break 80",
     "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741798429957,
+    "url": "http://localhost:3000/analytics-dashboard",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1027x808",
+      "language": "en-US"
+    },
+    "referrer": "",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741798429953,
+    "url": "http://localhost:3000/analytics-dashboard",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1027x808",
+      "language": "en-US"
+    },
+    "referrer": "",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741798883979,
+    "url": "http://localhost:3000/analytics-dashboard",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1027x808",
+      "language": "en-US"
+    },
+    "referrer": "",
+    "goalType": "break 80",
+    "ipAddress": "::1"
+  },
+  {
+    "eventType": "page_view",
+    "userId": "378d4b75-c2b3-41dd-87a7-43f3170066ea",
+    "timestamp": 1741798890249,
+    "url": "http://localhost:3000/analytics-dashboard",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "deviceInfo": {
+      "screen": "1027x808",
+      "language": "en-US"
+    },
+    "referrer": "",
+    "goalType": "break 80",
+    "ipAddress": "::1"
   }
 ]
