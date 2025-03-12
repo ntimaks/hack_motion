@@ -3,7 +3,7 @@ import Distance from "@/public/Distance";
 import GolfIcon from "@/public/GolfIcon";
 export default function SwingImprovement() {
     return (
-        <div className="bg-white rounded-[8px] p-6 pb-8 w-full">
+        <div className="bg-white rounded-[8px] p-6 pb-8 w-full transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
             <h3 className="text-[24px] mb-3">Swing Improvement</h3>
 
 

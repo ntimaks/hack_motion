@@ -2,7 +2,7 @@ import Star from "@/public/star";
 
 export default function ClubFaceControlCard() {
     return (
-        <div className="bg-white rounded-[8px] p-6 pb-8 w-full">
+        <div className="bg-white rounded-[8px] p-6 pb-8 w-full transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
             <h3 className="text-[24px] mb-3">Can clubface control improve your swing?</h3>
             <div className="border-t border-gray-200 my-4"></div>
 

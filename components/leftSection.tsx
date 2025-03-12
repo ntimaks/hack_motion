@@ -42,7 +42,7 @@ export default function LeftSection() {
                     <p className="text-black text-[16px]">Game improvement plan by HackMotion</p>
                 </div>
 
-                <button className="bg-[#5773FF] text-white text-[16px] px-6 py-3 rounded-full flex items-center gap-2 hover:bg-[#5773FF] transition-colors">
+                <button className="bg-[#5773FF] text-white text-[16px] px-6 py-3 rounded-full flex items-center gap-2 hover:bg-[#5773FF] hover:scale-105 transition-all duration-300">
                     Start Now
                     <ArrowRight className="h-4 w-4" />
                 </button>

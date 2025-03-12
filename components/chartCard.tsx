@@ -16,7 +16,7 @@ const ChartCard: React.FC = () => {
     }, [])
 
     return (
-        <div className={`rounded-[8px] bg-[#F7F7F7] w-full p-6 relative ${isMobile ? "aspect-square" : "h-[300px]"}`}>
+        <div className={`rounded-[8px] bg-[#F7F7F7] w-full p-6 relative ${isMobile ? "aspect-square" : "h-[300px]"} transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg`}>
             {/* Y-axis labels - Different for mobile and desktop */}
             {isMobile ? (
                 <>
@@ -120,4 +120,3 @@ const ChartCard: React.FC = () => {
 }
 
 export default ChartCard
-
