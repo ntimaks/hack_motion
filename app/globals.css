@@ -20,3 +20,14 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+.selection-highlight {
+  background-color: #5773ff4e;
+  color: #5773FF;
+}
+
+::selection {
+  background-color: #5773ff4e;
+  color: #5773FF;
+}
+
