@@ -159,7 +159,7 @@ export default function VideoSection({
     }
 
     return (
-        <div className="max-w-6xl mx-auto w-full p-6 ">
+        <div className="max-w-6xl mx-auto w-full p-6 px-0 sm:px-6">
             <h1 className="text-[32px] font-medium text-[#5773FF] mb-8 md:text-4xl sm:text-3xl">
                 {title}
             </h1>
